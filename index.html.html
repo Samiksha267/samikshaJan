@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie Goodies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url('jan.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: red;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+        }
+        h1 {
+            font-size: 48px;
+            margin: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .search-container {
+            margin: 20px 0;
+        }
+        .search-bar, .search-button, .add-button {
+            margin: 10px;
+        }
+        .search-bar {
+            padding: 15px;
+            width: 300px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-button, .add-button {
+            padding: 15px 25px;
+            font-size: 16px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        section {
+            width: 80%;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        th {
+            background-color: #ff6347;
+            color: white;
+        }
+        td img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .link, .map-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .link:hover, .map-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function searchRestaurants() {
+            const query = document.querySelector('.search-bar').value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const restaurantName = row.querySelector('td').innerText.toLowerCase();
+                row.style.display = restaurantName.includes(query) ? '' : 'none';
+            });
+        }
+
+        function addRestaurant() {
+            const name = prompt("Enter Restaurant Name:");
+            if (!name) return;
+
+            const website = prompt("Enter Website Link:");
+            if (!website) return;
+
+            const mapLink = prompt("Enter Google Maps Link:");
+            if (!mapLink) return;
+
+            const tableBody = document.querySelector('tbody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>
+                    <img src="placeholder.jpg" alt="${name}">
+                    <br>${name}
+                </td>
+                <td><a href="${website}" class="link" target="_blank">Visit Website</a></td>
+                <td><a href="${mapLink}" class="map-link" target="_blank">View on Map</a></td>
+            `;
+            tableBody.appendChild(newRow);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Foodie Goodies</h1>
+    </header>
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search for restaurants">
+        <button class="search-button" onclick="searchRestaurants()">Search</button>
+        <button class="add-button" onclick="addRestaurant()">Add Restaurant</button>
+    </div>
+    <section>
+        <h2>Explore Restaurants</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Restaurant Name & Image</th>
+                    <th>Website</th>
+                    <th>Address (Google Maps)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="Hideout.jpg" >
+                        <br>Hideout
+                    </td>
+                    <td><a href="file:///C:/Users/samik/OneDrive/Desktop/web%20programming/Project/foodie_goodie/Hideout.html" class="link" target="_blank">Visit Website</a></td>
+                    <td><a href="https://maps.app.goo.gl/GgqM3KrAGeEfGqN3A" class="map-link" target="_blank">View on Map</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="flourBox.jpg" >
+                        <br>Flour Box
+                    </td>
+                    <td><a href="file:///C:/Users/samik/OneDrive/Desktop/web%20programming/Project/foodie_goodie/flourBox.html" class="link" target="_blank">Visit Website</a></td>
+                    <td><a href="https://maps.app.goo.gl/1BEXrZ5suZzt7B4P9" class="map-link" target="_blank">View on Map</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="SaiSwad.jpg" >
+                        <br>Sai Swad
+                    </td>
+                    <td><a href="file:///C:/Users/samik/OneDrive/Desktop/web%20programming/Project/foodie_goodie/Saiswad.html" class="link" target="_blank">Visit Website</a></td>
+                    <td><a href="https://maps.app.goo.gl/J3MhSvKAbvLRTLH48" class="map-link" target="_blank">View on Map</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="WhiteHouse.jpg" >
+                        <br>White House
+                    </td>
+                    <td><a href="file:///C:/Users/samik/OneDrive/Desktop/web%20programming/Project/foodie_goodie/WhiteHouse.html" class="link" target="_blank">Visit Website</a></td>
+                    <td><a href="https://maps.app.goo.gl/ULihxTahWyDZia746" class="map-link" target="_blank">View on Map</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
