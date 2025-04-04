@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hideout Restaurant Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        section {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            color: #343a40;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        th {
+            background-color: #ff6347;
+            color: white;
+        }
+        td img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .back-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6347;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #e5533c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hideout Restaurant Menu</h1>
+    </header>
+    <section>
+        <h2>Our Delicious Offerings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dish Image</th>
+                    <th>Dish Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="dish1.jpg" alt="Dish 1"></td>
+                    <td>Grilled Chicken</td>
+                    <td>₹350</td>
+                </tr>
+                <tr>
+                    <td><img src="dish2.jpg" alt="Dish 2"></td>
+                    <td>Veggie Delight Pizza</td>
+                    <td>₹400</td>
+                </tr>
+                <tr>
+                    <td><img src="dish3.jpg" alt="Dish 3"></td>
+                    <td>Pasta Alfredo</td>
+                    <td>₹300</td>
+                </tr>
+                <tr>
+                    <td><img src="dish4.jpg" alt="Dish 4"></td>
+                    <td>Chocolate Brownie</td>
+                    <td>₹150</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="Zomato.html" class="back-button">Back to Home</a>
+    </section>
+</body>
+</html>

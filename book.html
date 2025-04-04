@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group button {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .booked-tables {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Book a Table</h2>
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contact" required>
+                <div id="contactError" class="error"></div>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+                <div id="dateError" class="error"></div>
+            </div>
+            <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+            <div class="form-group">
+                <label for="guests">Number of Guests:</label>
+                <select id="guests" name="guests" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="1">Single</option>
+                    <option value="2">Couple</option>
+                    <option value="3-4">Friends</option>
+                    <option value="5+">Family</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Tables Remaining:</label>
+                <div id="tablesRemaining">10</div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Book Now</button>
+            </div>
+        </form>
+        <div class="booked-tables">
+            <h3>Booked Tables:</h3>
+            <ul id="bookedTablesList"></ul>
+        </div>
+    </div>
+    <script>
+        let bookedTables = [];
+        const maxTables = 10;
+
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Validate contact number
+            const contact = document.getElementById('contact').value;
+            const contactError = document.getElementById('contactError');
+            if (contact.length !== 10 || isNaN(contact)) {
+                contactError.textContent = 'Contact number must be 10 digits.';
+                return;
+            } else {
+                contactError.textContent = '';
+            }
+
+            // Validate date
+            const date = new Date(document.getElementById('date').value);
+            const today = new Date();
+            const dateError = document.getElementById('dateError');
+            if (date < today.setHours(0, 0, 0, 0)) {
+                dateError.textContent = 'Date cannot be in the past.';
+                return;
+            } else {
+                dateError.textContent = '';
+            }
+
+            // Check available tables
+            const tablesRemainingElement = document.getElementById('tablesRemaining');
+            let tablesRemaining = parseInt(tablesRemainingElement.textContent);
+            if (tablesRemaining > 0) {
+                tablesRemaining -= 1;
+                tablesRemainingElement.textContent = tablesRemaining;
+
+                // Track booked table
+                const tableNumber = maxTables - tablesRemaining;
+                bookedTables.push(tableNumber);
+
+                // Display booked table
+                const bookedTablesList = document.getElementById('bookedTablesList');
+                const newListItem = document.createElement('li');
+                newListItem.textContent = `Table ${tableNumber} - ${document.getElementById('guests').value}`;
+                bookedTablesList.appendChild(newListItem);
+
+                alert(`Table ${tableNumber} booked successfully!`);
+            } else {
+                alert('No tables remaining for booking.');
+            }
+        });
+    </script>
+</body>
+</html>

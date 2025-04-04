@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Restaurant Manager</h1>
+    </header>
+
+    <section>
+        <h2>Register Your Restaurant</h2>
+        <form id="restaurantForm">
+            <input type="text" id="name" placeholder="Restaurant Name" required>
+            <input type="text" id="menu" placeholder="Menu Items (comma separated)" required>
+            <input type="number" id="price" placeholder="Average Price" required>
+            <input type="text" id="offer" placeholder="Special Offer" required>
+            <input type="text" id="location" placeholder="Location" required>
+            <input type="url" id="map" placeholder="Google Maps Link" required>
+            <button type="submit">Register</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Search Restaurants</h2>
+        <input type="text" id="search" placeholder="Search by Name or Location">
+    </section>
+
+    <section>
+        <h2>Filter by Price</h2>
+        <input type="number" id="minPrice" placeholder="Min Price">
+        <input type="number" id="maxPrice" placeholder="Max Price">
+        <button id="filterPrice">Filter</button>
+    </section>
+
+    <section>
+        <h2>Existing Restaurants</h2>
+        <div id="restaurantList"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
